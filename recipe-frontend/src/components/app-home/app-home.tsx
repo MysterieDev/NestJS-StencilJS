@@ -10,6 +10,7 @@ export class AppHome {
   render() {
     return (
       <div class='app-home'>
+        <recipe-card></recipe-card>
         <p>
           Welcome to the Stencil App Starter.
           You can use this starter to build entire apps all with
