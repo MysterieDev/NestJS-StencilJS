@@ -1,4 +1,4 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty, PartialType } from "@nestjs/swagger";
 
 export class CreateRecipeDto{
     id: string;
@@ -9,3 +9,5 @@ export class CreateRecipeDto{
     @ApiProperty()
     rating: number
 }
+
+export class UpdateRecipeDto extends PartialType(CreateRecipeDto) {}

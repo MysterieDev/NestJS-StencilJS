@@ -4,7 +4,7 @@ import { isString } from "util";
 export class Recipe{
 
     @ApiProperty()
-    public id: string;
+    public readonly id: string;
     @ApiProperty()
     public name: string;
     @ApiProperty()

@@ -1,4 +1,5 @@
-import { CreateRecipeDto } from './createRecipe.dto';
+import { NotFoundException, Patch } from '@nestjs/common';
+import { CreateRecipeDto } from './Recipe.dto';
 import { Recipe } from './recipe.model';
 import { RecipeService } from './recipe.service';
 import { Controller, Post, Body, Get, Param } from '@nestjs/common';
@@ -20,6 +21,14 @@ export class RecipeController {
         return {id: generateId}
     }
 
+    @Patch("update/:id")
+    @ApiTags("recipes")
+    @ApiBody({type: CreateRecipeDto})
+    @ApiCreatedResponse({ status: 200, description: 'The record has been successfully updated.', type: Recipe})
+    updateRecipe(@Body() createRecipeDto: Partial<CreateRecipeDto>, @Param("id") id: string){
+        return this.recipeSvc.updateRecipe(id, createRecipeDto)
+    }
+
     @Get()
     @ApiTags("recipes")
     @ApiResponse({ status: 200, description: 'Successfull'})
@@ -27,13 +36,13 @@ export class RecipeController {
       return  this.recipeSvc.getAllRecipes();
     }
 
-    @Get("recipe/:id")
+    @Get(":id")
     @ApiTags("recipes")
-    getRecipe(@Param("id") id: string): Recipe[] {
+    getRecipe(@Param("id") id: string): Recipe[] | NotFoundException {
         return this.recipeSvc.getSingleRecipe(id)
     }
 
-    @Get("recipe/delete/:id")
+    @Get("delete/:id")
     @ApiTags("recipes")
     @ApiResponse({ status: 204, description: 'Deleted'})
     deleteRecipe(@Param("id") id:string): void{
