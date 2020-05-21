@@ -1,3 +1,4 @@
+import { CreateRecipeDto } from './createRecipe.dto';
 import { Recipe } from './recipe.model';
 import { Injectable } from "@nestjs/common";
 
@@ -6,9 +7,9 @@ import { Injectable } from "@nestjs/common";
 export class RecipeService {
     private recipes: Recipe[] = [];
 
-    insertRecipe(id: string, title: string, desc: string, rating: number){
-        const newRecipe = new Recipe(id, title, desc, rating);
-        this.recipes.push(newRecipe);
+    insertRecipe(recipe: CreateRecipeDto){
+        this.recipes.push(recipe);
+        return recipe;
     }
 
     getAllRecipes(){
@@ -17,5 +18,9 @@ export class RecipeService {
 
     getSingleRecipe(id){
         return this.recipes.filter( recipe => recipe.id === id);
+    }
+
+    deleteSingleRecipe(id){
+        this.recipes = this.recipes.filter( rec => rec.id !== id)
     }
 }
