@@ -15,10 +15,7 @@ export class RecipeController {
     @ApiBody({type: CreateRecipeDto})
     @ApiCreatedResponse({ status: 201, description: 'The record has been successfully created.', type: CreateRecipeDto})
     async addRecipe( @Body() createRecipeDto: CreateRecipeDto){
-        const generateId = uuidv4();
-        createRecipeDto.id = generateId;
         this.recipeSvc.insertRecipe(createRecipeDto);
-        return {id: generateId}
     }
 
     @Patch("update/:id")

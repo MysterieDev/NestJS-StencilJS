@@ -1,6 +1,5 @@
-import { Component, ComponentInterface, Host, h, State } from '@stencil/core';
-import { getAllRecipes } from '../../utils/content-api';
-import { Recipe } from "../../utils/interfaces";
+import { Component, ComponentInterface, Host, h, Prop } from '@stencil/core';
+import { Recipe } from '../../utils/interfaces';
 
 @Component({
   tag: 'recipe-card',
@@ -8,26 +7,17 @@ import { Recipe } from "../../utils/interfaces";
   shadow: false,
 })
 export class RecipeCard implements ComponentInterface {
-  @State() recipes;
-   componentWillLoad(){
-    return getAllRecipes().then(
-      (data: Recipe[]) => {
-      this.recipes = data
-      });
-  }
-
-  
-
+@Prop() recipe: Recipe
   render() {
     return (
       <Host>
-        { this.recipes ? (
-        this.recipes.map(element => 
-        <h4>Name: {element.name}</h4>
-        )
-        ): (
-        <h2>No Recipes Found</h2>
-        )}
+       <div>
+          <hr>
+        <h4>Name: {this.recipe.name}</h4>
+        <p>Description: {this.recipe.description} </p>
+        <small>Rating: {this.recipe.rating}</small>
+        </hr>
+        </div>
       </Host>
     );
   }

@@ -1,3 +1,7 @@
 :host {
   display: block;
 }
+hr{
+  padding: 5px;
+  background-color: aqua;
+}

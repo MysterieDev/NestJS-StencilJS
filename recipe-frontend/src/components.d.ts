@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults, } from "@stencil/router";
+import { Recipe, } from "./utils/interfaces";
 export namespace Components {
     interface AppHome {
     }
@@ -14,7 +15,12 @@ export namespace Components {
     }
     interface AppRoot {
     }
+    interface RecipeAddForm {
+    }
     interface RecipeCard {
+        "recipe": Recipe;
+    }
+    interface RecipeList {
     }
 }
 declare global {
@@ -36,17 +42,31 @@ declare global {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLRecipeAddFormElement extends Components.RecipeAddForm, HTMLStencilElement {
+    }
+    var HTMLRecipeAddFormElement: {
+        prototype: HTMLRecipeAddFormElement;
+        new (): HTMLRecipeAddFormElement;
+    };
     interface HTMLRecipeCardElement extends Components.RecipeCard, HTMLStencilElement {
     }
     var HTMLRecipeCardElement: {
         prototype: HTMLRecipeCardElement;
         new (): HTMLRecipeCardElement;
     };
+    interface HTMLRecipeListElement extends Components.RecipeList, HTMLStencilElement {
+    }
+    var HTMLRecipeListElement: {
+        prototype: HTMLRecipeListElement;
+        new (): HTMLRecipeListElement;
+    };
     interface HTMLElementTagNameMap {
         "app-home": HTMLAppHomeElement;
         "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
+        "recipe-add-form": HTMLRecipeAddFormElement;
         "recipe-card": HTMLRecipeCardElement;
+        "recipe-list": HTMLRecipeListElement;
     }
 }
 declare namespace LocalJSX {
@@ -57,13 +77,20 @@ declare namespace LocalJSX {
     }
     interface AppRoot {
     }
+    interface RecipeAddForm {
+    }
     interface RecipeCard {
+        "recipe"?: Recipe;
+    }
+    interface RecipeList {
     }
     interface IntrinsicElements {
         "app-home": AppHome;
         "app-profile": AppProfile;
         "app-root": AppRoot;
+        "recipe-add-form": RecipeAddForm;
         "recipe-card": RecipeCard;
+        "recipe-list": RecipeList;
     }
 }
 export { LocalJSX as JSX };
@@ -73,7 +100,9 @@ declare module "@stencil/core" {
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "recipe-add-form": LocalJSX.RecipeAddForm & JSXBase.HTMLAttributes<HTMLRecipeAddFormElement>;
             "recipe-card": LocalJSX.RecipeCard & JSXBase.HTMLAttributes<HTMLRecipeCardElement>;
+            "recipe-list": LocalJSX.RecipeList & JSXBase.HTMLAttributes<HTMLRecipeListElement>;
         }
     }
 }
