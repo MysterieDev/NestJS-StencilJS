@@ -1,11 +1,19 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Listen, Element } from '@stencil/core';
 
 @Component({
   tag: 'app-home',
   styleUrl: 'app-home.css',
-  shadow: true
+  shadow: false
 })
 export class AppHome {
+  @Element() el: HTMLElement
+
+  
+  @Listen("recipeAddRequest")
+  processAddRequest(e: Event){   
+    e.stopPropagation();
+    this.el.querySelector<HTMLRecipeListElement>("recipe-list").fetchRecipes()
+  }
 
   render() {
     return (

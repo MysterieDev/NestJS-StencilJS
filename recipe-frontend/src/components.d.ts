@@ -21,6 +21,7 @@ export namespace Components {
         "recipe": Recipe;
     }
     interface RecipeList {
+        "fetchRecipes": () => Promise<void>;
     }
 }
 declare global {
@@ -78,6 +79,7 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface RecipeAddForm {
+        "onRecipeAddRequest"?: (event: CustomEvent<any>) => void;
     }
     interface RecipeCard {
         "recipe"?: Recipe;

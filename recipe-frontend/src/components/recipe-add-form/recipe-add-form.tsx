@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Host, h, State } from '@stencil/core';
+import { Component, ComponentInterface, Host, h, State, Event, EventEmitter } from '@stencil/core';
 import { CreateRecipeDto } from '../../../../src/recipes/models/Recipe.dto';
 import { addRecipe } from '../../utils/content-api';
 
@@ -10,7 +10,7 @@ import { addRecipe } from '../../utils/content-api';
 export class RecipeAddForm implements ComponentInterface {
 
   @State() recipeObject: CreateRecipeDto;
-
+  @Event({bubbles: true}) recipeAddRequest: EventEmitter
 
 
   componentWillLoad(){
@@ -29,6 +29,10 @@ export class RecipeAddForm implements ComponentInterface {
       rating: 0
     }
   }
+  
+  addRecipeRequest(){
+    addRecipe(this.recipeObject).then(_=> this.recipeAddRequest.emit());
+  }
 
   render() {
     return (
@@ -39,7 +43,7 @@ export class RecipeAddForm implements ComponentInterface {
         <input onInput={(e: InputEvent) => this.updateValue("description", e)} type="text" value={this.recipeObject.description} /><br/>
         <label>rating</label><br/>
         <input onInput={(e: InputEvent) => this.updateValue("rating", e)} type="number" min="0" value={this.recipeObject.rating} /><br/>
-        <button onClick={ _=> addRecipe(this.recipeObject)} >Add Recipe</button>
+        <button onClick={ _=> this.addRecipeRequest()} >Add Recipe</button>
       </Host>
     );
   }

@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Host, h, State } from '@stencil/core';
+import { Component, ComponentInterface, Host, h, State, Method } from '@stencil/core';
 import { getAllRecipes } from '../../utils/content-api';
 import { Recipe } from "../../utils/interfaces";
 
@@ -8,15 +8,19 @@ import { Recipe } from "../../utils/interfaces";
   shadow: false,
 })
 export class RecipeList implements ComponentInterface {
+
   @State() recipes;
    componentWillLoad(){
-    return getAllRecipes().then(
-      (data: Recipe[]) => {
-      this.recipes = data
-      });
+     this.fetchRecipes();
   }
 
-  
+  @Method()
+  fetchRecipes(){
+      return getAllRecipes().then(
+        (data: Recipe[]) => {
+        this.recipes = data
+        });
+    }
 
   render() {
     return (
