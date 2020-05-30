@@ -6,7 +6,7 @@ description: String,
 rating: Number,
 })
 
-export interface RecipeDocument extends mongoose.Document{
+export interface Recipe extends mongoose.Document{
     readonly name: string;
     readonly description: string;
     readonly rating: number;

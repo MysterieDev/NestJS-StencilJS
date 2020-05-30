@@ -1,6 +1,6 @@
 import { NotFoundException, Patch } from '@nestjs/common';
 import { CreateRecipeDto } from './models/Recipe.dto';
-import { RecipeDocument } from './models/recipe.model';
+import { Recipe } from './models/recipe.model';
 import { RecipeService } from './recipe.service';
 import { Controller, Post, Body, Get, Param } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
@@ -29,7 +29,7 @@ export class RecipeController {
     @Get()
     @ApiTags("recipes")
     @ApiResponse({ status: 200, description: 'Successfull'})
-    async getAllRecipes(): Promise<RecipeDocument[]>{
+    async getAllRecipes(): Promise<Recipe[]>{
       return  this.recipeSvc.getAllRecipes();
     }
 
