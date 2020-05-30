@@ -25,6 +25,7 @@
     "@nestjs/platform-express": "^6.7.2",
     "@nestjs/swagger": "^4.5.7",
     "@types/uuid": "^8.0.0",
+    "hbs": "^4.1.1",
     "mongoose": "^5.9.15",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
