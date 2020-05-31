@@ -1,18 +1,17 @@
-import { Component, ComponentInterface, Host, h, Prop } from '@stencil/core';
-import { Recipe } from '../../utils/interfaces';
+import { Component, ComponentInterface, Host, h } from '@stencil/core';
+
 @Component({
   tag: 'recipe-card',
   styleUrl: 'recipe-card.css',
-  shadow: true,
+  shadow: false,
 })
 export class RecipeCard implements ComponentInterface {
 
-  @Prop() recipe: Recipe;
 
   render() {
     return (
       <Host>
-Test
+     <h1> <slot></slot></h1>
       </Host>
     );
   }

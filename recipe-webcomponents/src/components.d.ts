@@ -5,10 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Recipe, } from "./utils/interfaces";
 export namespace Components {
     interface RecipeCard {
-        "recipe": Recipe;
     }
 }
 declare global {
@@ -24,7 +22,6 @@ declare global {
 }
 declare namespace LocalJSX {
     interface RecipeCard {
-        "recipe"?: Recipe;
     }
     interface IntrinsicElements {
         "recipe-card": RecipeCard;
