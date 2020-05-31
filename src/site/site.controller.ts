@@ -1,4 +1,3 @@
-import { RecipeService } from './../recipes/recipe.service';
 import { Controller, Get, Render } from '@nestjs/common';
 
 @Controller('site')
