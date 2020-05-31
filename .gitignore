@@ -1,6 +1,11 @@
 # compiled output
 /dist
+/recipe-webcomponents/dist
+/recipe-webcomponents/loader
+/recipe-webcomponents/node_modules
+/recipe-webcomponents/www
 /node_modules
+/public
 
 # Logs
 logs

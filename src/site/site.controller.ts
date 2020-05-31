@@ -4,7 +4,7 @@ import { Controller, Get, Render } from '@nestjs/common';
 @Controller('site')
 export class SiteController {
 
-    constructor(private readonly recipeSvc: RecipeService){}
+    constructor(){}
     @Get()
     @Render('index.hbs')
     root() {
@@ -14,7 +14,6 @@ export class SiteController {
     @Get('recipes/home')
     @Render('recipes/home.hbs')
     async recipesOverview(){
-    const allRecipes = await this.recipeSvc.getAllRecipes()
-    return { recipes: allRecipes }
+    return { recipes: [{name: "recipe1", description: "lisa", rating: 2},{name: "recipe1", desc: "lisa", rating: 2}] }
     }
 }

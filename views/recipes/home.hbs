@@ -3,9 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <title>App</title>
-   {{!--  <script src="../../recipe-frontend/www/"></script> --}}
+   <script src="http://localhost:3000/dist/recipe-webcomponents.js"></script>
   </head>
   <body>
     <h1> Test </h1>
+    {{#each recipes}}
+    <recipe-card recipe={{this}}></recipe-card>
+    {{this.name}}
+    {{/each}}
   </body>
 </html>

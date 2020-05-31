@@ -1,5 +1,5 @@
 import { CreateRecipeDto, UpdateRecipeDto } from './models/Recipe.dto';
-import { RecipeDocument } from './models/recipe.model';
+import { Recipe } from './models/recipe.model';
 import { Injectable, NotFoundException, Inject } from "@nestjs/common";
 import { Model } from 'mongoose';
 
@@ -7,7 +7,7 @@ import { Model } from 'mongoose';
 @Injectable()
 export class RecipeService {
 
-    constructor(@Inject("RECIPE_MODEL") private recipeModel: Model<RecipeDocument>){}
+    constructor(@Inject("RECIPE_MODEL") private recipeModel: Model<Recipe>){}
 
     insertRecipe(recipe: CreateRecipeDto){
         const newRecipe = new this.recipeModel(recipe);
