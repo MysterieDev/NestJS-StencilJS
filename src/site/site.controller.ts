@@ -13,6 +13,6 @@ export class SiteController {
     @Get('recipes/home')
     @Render('recipes/home.hbs')
     async recipesOverview(){
-    return { recipes: [{name: "recipe1", description: "lisa", rating: 2},{name: "recipe1", desc: "lisa", rating: 2}] }
+    return { recipes: [{name: "recipe1", description: "loremip", rating: 2},{name: "recipe1", description: "loremi", rating: 2}] }
     }
 }
