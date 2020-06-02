@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface RecipeCard {
+        "recipeName": string;
     }
 }
 declare global {
@@ -22,6 +23,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface RecipeCard {
+        "recipeName"?: string;
     }
     interface IntrinsicElements {
         "recipe-card": RecipeCard;
